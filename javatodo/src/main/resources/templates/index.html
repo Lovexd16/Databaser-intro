@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Todo med Java</h1>
+    <div>
+        <form method="post" th:action="@{/new-item}"> <!--Berättar att vi vill anropa postmappingen. Med action berättar vi vilken-->
+            <input type="text" name="item">
+            <button>Spara</button>
+        </form>
+    </div>
+    <ul>
+        <li th:each=" todo : ${todos}">
+            <span th:text="${todo.item}"></span>
+            <a th:href="@{delete(id=${todo.id})}">[X]</a>
+        </li>
+    </ul>
+</body>
+</html>
